@@ -101,8 +101,6 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
         if (spaces == 1 && letters == 1)
         {
             sscanf(previous_player_input, "%d T", &training_time_left);
-            printf("\n------------------------------------------\n");
-            printf("Read training time left: %d\n", training_time_left);
             letters = 0;
             spaces = 0;
         }
@@ -114,15 +112,6 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
 
         if (training_time_left == 0)
         {
-            /* select proper row in case there is a mismatch between active_units row numbering and id of a unit 
-            for (int g = 0; g < *u; g++)
-            {
-                if (a[g].unit_id == base_id)
-                    row_number = g;
-                else
-                    continue;
-            }*/
-
             if (strcmp(fname, "player1.txt") == 0)
             {
                 strcpy(training_unit_affiliation, "P");
@@ -176,86 +165,16 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
             a[training_unit_id].x_coord = training_unit_x;
             a[training_unit_id].y_coord = training_unit_y;
             a[training_unit_id].current_stamina = training_unit_stamina;
-            //a[training_unit_id].training_time = training_time_left;
 
-            strcpy(a[row_number].is_base_busy, "0");
-            printf("Training done: %s %s %d %d %d %d\n", a[training_unit_id].affiliation, a[training_unit_id].unit_type, a[training_unit_id].unit_id, a[training_unit_id].x_coord, a[training_unit_id].y_coord, a[training_unit_id].current_stamina);
+            strcpy(a[row_number].is_base_busy, "0");//printf("Training done: %s %s %d %d %d %d\n", a[training_unit_id].affiliation, a[training_unit_id].unit_type, a[training_unit_id].unit_id, a[training_unit_id].x_coord, a[training_unit_id].y_coord, a[training_unit_id].current_stamina);
         }
-
-        //printf("\n%d %d %d\n", letters, digits, spaces);
-        /*if (spaces == 6)
-        {
-            sscanf(previous_player_input, "%s %s %d %d %d %d %d", training_unit_affiliation, training_unit_type, &training_unit_id, &training_unit_x, &training_unit_y, &training_unit_stamina, &training_time_left);
-            //printf("Read aff: %s, type: %s, id: %d, x: %d, y: %d, stamina: %d, training time left: %d\n", training_unit_affilitation, training_unit_type, training_unit_id, training_unit_x, training_unit_y, training_unit_stamina, training_time_left);
-            letters = 0;
-            spaces = 0;
-
-            if ((strcmp(training_unit_affiliation, "0") == 0) && (strcmp(training_unit_type, "0") == 0))
-            {
-                continue;
-            }
-            if ((strcmp(training_unit_affiliation, "P") == 0) && training_time_left > 0)
-            {
-                continue;
-            }
-            if ((strcmp(training_unit_affiliation, "E") == 0) && training_time_left > 0)
-            {
-                continue;
-            }
-            if ((strcmp(training_unit_affiliation, "P") == 0) && training_time_left == 0)
-            {
-                strcpy(a[*u].affiliation, training_unit_affiliation);
-                strcpy(a[*u].unit_type, training_unit_type);
-                a[*u].unit_id = training_unit_id;
-                a[*u].x_coord = training_unit_x;
-                a[*u].y_coord = training_unit_y;
-                a[*u].current_stamina = training_unit_stamina;
-                a[*u].training_time = 0;
-                *u++;
-                strcpy(a[0].is_base_busy, "0");
-
-                strcpy(a[training_unit_id].affiliation, training_unit_affiliation);
-                strcpy(a[training_unit_id].unit_type, training_unit_type);
-                a[training_unit_id].unit_id = training_unit_id;
-                a[training_unit_id].x_coord = training_unit_x;
-                a[training_unit_id].y_coord = training_unit_y;
-                a[training_unit_id].current_stamina = training_unit_stamina;
-                a[training_unit_id].training_time = training_time_left;
-                strcpy(a[0].is_base_busy, "0");
-            }
-            
-            if ((strcmp(training_unit_affiliation, "E") == 0) && training_time_left == 0)
-            {
-                strcpy(a[*u].affiliation, training_unit_affiliation);
-                strcpy(a[*u].unit_type, training_unit_type);
-                a[*u].unit_id = training_unit_id;
-                a[*u].x_coord = training_unit_x;
-                a[*u].y_coord = training_unit_y;
-                a[*u].current_stamina = training_unit_stamina;
-                a[*u].training_time = 0;
-                *u++;
-                strcpy(a[1].is_base_busy, "0");
-
-                strcpy(a[training_unit_id].affiliation, training_unit_affiliation);
-                strcpy(a[training_unit_id].unit_type, training_unit_type);
-                a[training_unit_id].unit_id = training_unit_id;
-                a[training_unit_id].x_coord = training_unit_x;
-                a[training_unit_id].y_coord = training_unit_y;
-                a[training_unit_id].current_stamina = training_unit_stamina;
-                a[training_unit_id].training_time = training_time_left;
-                strcpy(a[1].is_base_busy, "0");
-            } 
-        } */
-
-
-
+        
     fptr1 = fopen(fname1, "r");
     if (!fptr1)
         printf("Cannot find %s\n", fname1);
 
     while (fgets(next_player_input, length, fptr1) != NULL)
     {
-        //printf("%s", next_player_input);
         for (int i = 0; next_player_input[i] != '\n'; i++)  
         {
             if (isupper(next_player_input[i]))
@@ -272,11 +191,9 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
             }         
         }
 
-        //printf("\n%d %d %d\n", letters, digits, spaces);
         if (letters == 0 && digits >= 1 && spaces == 0)
         {
             sscanf(next_player_input, "%ld", &gold);
-            //printf("Read gold: %ld\n", gold);
             letters = 0;
             digits = 0;
             spaces = 0;
@@ -294,8 +211,6 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
 
     while (fgets(order, length, fptr2) != NULL)
     {
-        //printf("%s", order);
-
         for (int i = 0; order[i] != '\n'; i++)
         {
             if (isupper(order[i]))
@@ -311,8 +226,6 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
         if (letters == 2)
         {
             sscanf(order, "%d B %s", &base_id, type);
-            //printf("Read base id: %d and training unit type: %s\n", id, type);
-            //printf("Czy to tu?\n");
             letters = 0;
             spaces = 0;
 
@@ -328,12 +241,9 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
             strcpy(a[row_number].is_base_busy, type);
         }
 
-        //printf("Po bazach\n");
-
         if (letters == 1 && spaces == 3)
         {
             sscanf(order, "%d M %d %d", &id, &x, &y);
-            //printf("Read id: %d and coords: x: %d y: %d\n", id, x, y);
             letters = 0;
             spaces = 0;
 
@@ -349,15 +259,11 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
             a[row_number].x_coord = x;
             a[row_number].y_coord = y;
 
-            //printf("%s %s %d %d %d %d\n", a[id].affiliation, a[id].unit_type, a[id].unit_id, a[id].x_coord, a[id].y_coord, a[id].current_stamina);
         }
         
-        //printf("Po ruchach\n");
-
         if (letters == 1 && spaces == 2)
         {
             sscanf(order, "%d A %d", &id, &target_id);
-            //printf("Read id: %d and target id: %d\n", id, target_id);
             letters = 0;
             spaces = 0;
 
@@ -372,37 +278,30 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
 
             if (strcmp(a[row_number].unit_type, "K") == 0)
             {
-                //int attacker[] = { 35, 35, 35, 35, 35, 35, 35, 35 };
                 attacker = knight;
             }
             else if (strcmp(a[row_number].unit_type, "S") == 0)
             {
-                //int attacker[] = { 30, 30, 30, 20, 20, 30, 30, 30 };
                 attacker = swordsman;
             }
             else if (strcmp(a[row_number].unit_type, "A") == 0)
             {
-                //int attacker[] = { 15, 15, 15, 15, 10, 10, 15, 15 };
                 attacker = archer;
             }
             else if (strcmp(a[row_number].unit_type, "P") == 0)
             {
-                //int attacker[] = { 35, 15, 15, 15, 15, 10, 15, 10 };
                 attacker = pikeman;
             }
             else if (strcmp(a[row_number].unit_type, "C") == 0)
             {
-                //int attacker[] = { 40, 40, 40, 40, 40, 40, 40, 50 };
                 attacker = catapult;
             }
             else if (strcmp(a[row_number].unit_type, "R") == 0)
             {
-                //int attacker[] = { 10, 10, 10, 10, 10, 10, 10, 50 };
                 attacker = ram;
             }
             else if (strcmp(a[row_number].unit_type, "W") == 0)
             {
-                //int attacker[] = { 5, 5, 5, 5, 5, 5, 5, 1 };
                 attacker = worker;
             }
 
@@ -417,42 +316,34 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
 
             if (strcmp(a[row_number].unit_type, "K") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_K]);
                 a[row_number].current_stamina -= attacker[vs_K];
             }
             else if (strcmp(a[row_number].unit_type, "S") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_S]);
                 a[row_number].current_stamina -= attacker[vs_S];
             }
             else if (strcmp(a[row_number].unit_type, "A") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_A]);
                 a[row_number].current_stamina -= attacker[vs_A];
             }
             else if (strcmp(a[row_number].unit_type, "P") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_P]);
                 a[row_number].current_stamina -= attacker[vs_P];
             }
             else if (strcmp(a[row_number].unit_type, "C") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_C]);
                 a[row_number].current_stamina -= attacker[vs_C];
             }
             else if (strcmp(a[row_number].unit_type, "R") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_R]);
                 a[row_number].current_stamina -= attacker[vs_R];
             }
             else if (strcmp(a[row_number].unit_type, "W") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_W]);
                 a[row_number].current_stamina -= attacker[vs_W];
             }
             else if (strcmp(a[row_number].unit_type, "B") == 0)
             {
-                //printf("Damage dealt: %d \n", attacker[vs_B]);
                 a[row_number].current_stamina -= attacker[vs_B];
             }
             
@@ -463,31 +354,20 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
                     printf("\nPlayer 1 loses the base, game over.\n");
                     exit(0);
                 }
-                    //strcpy(message, "Player 1");
+
                 if (strcmp(a[row_number].affiliation, "E") == 0)
                 {
                     printf("\nPlayer 2 loses the base, game over.\n");
                     exit(0);
                 }
-                    //strcpy(message, "Player 2");
             }
 
             if (a[row_number].current_stamina <= 0)
             {
                 a[row_number].current_stamina = -1;
-                //printf("Unit %d defeated by unit %d.\n", target_id, id);
             }
-            //a[target_id].current_stamina -= attacker[versus];
-            //printf("%s %s %d %d %d %d\n", a[target_id].affiliation, a[target_id].unit_type, a[target_id].unit_id, a[target_id].x_coord, a[target_id].y_coord, a[target_id].current_stamina);
         }    
-        
-        //printf("Po walkach\n");
-
-        //letters = 0;
-        //spaces = 0;
-        //count++;
     }
-    //printf("Count: %d\n", count);
 
     fclose(fptr2);
 
@@ -506,16 +386,13 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
     {
         fprintf(stderr, "unable to write bank status\n");
     }
-    //printf("Gold saved.\n");
 
     /* Save base and unit data */
     for (int j = 0; j < *u; j++)
     {
-        printf("Loop: %d\n", j);
-        //printf("Wchodzę do pętli\n");
+
         if (a[j].current_stamina == -1)
         {
-            //printf("Przeskok.\n");
             continue;
         }
 
@@ -525,36 +402,16 @@ void load_orders(char fname[], char fname1[], char fname2[], char fname3[], au a
             {
                 fprintf(stderr, "unable to write base data\n");
             }
-            //printf("Base saved.\n");
         }
 
-        /*if ((strcmp(a[j].unit_type, "B") == 0) && a[j].unit_id != base_id)
-        {
-            if (fprintf(fptr3, "%s %s %d %d %d %d %s\n", a[j].affiliation, a[j].unit_type, a[j].unit_id, a[j].x_coord, a[j].y_coord, a[j].current_stamina, a[j].is_base_busy) < 0)
-            {
-                fprintf(stderr, "unable to write base data\n");
-            }
-            //printf("Base saved.\n");
-        }
-
-        if ((strcmp(a[j].unit_type, "B") == 0) && a[j].unit_id == base_id)
-        {
-            if (fprintf(fptr3, "%s %s %d %d %d %d %s\n", a[j].affiliation, a[j].unit_type, a[j].unit_id, a[j].x_coord, a[j].y_coord, a[j].current_stamina, a[j].is_base_busy) < 0)
-            {
-                fprintf(stderr, "unable to write base data\n");
-            }
-            //printf("Base saved.\n");
-        }*/
-       
         if (strcmp(a[j].unit_type, "B") != 0)
         {
             if (fprintf(fptr3, "%s %s %d %d %d %d\n", a[j].affiliation, a[j].unit_type, a[j].unit_id, a[j].x_coord, a[j].y_coord, a[j].current_stamina) < 0)
             {
                 fprintf(stderr, "unable to write unit data\n");
             }
-            //printf("Units saved.\n");
         }
     }
-    //printf("Po zapisie do status.txt.\n");
+    
     fclose(fptr3);
 }

@@ -15,7 +15,6 @@ typedef struct {
     int remaining_movement;
     int attack_count;
     char is_base_busy[2];
-//    int training_time;
 } au;
 
 void load_status(char fname[], int* u, long* g, au a[])
@@ -72,8 +71,6 @@ void load_status(char fname[], int* u, long* g, au a[])
             a[i].remaining_movement = 5;
         else if (strcmp(a[i].unit_type, "B") == 0) // bases cannot move
             a[i].remaining_movement = 0;
-        //else if (a[i].training_time > 0) // training units cannot move
-        //    a[i].remaining_movement = 0;
         else
             a[i].remaining_movement = 2;
     }
@@ -83,8 +80,6 @@ void load_status(char fname[], int* u, long* g, au a[])
     {
         if (strcmp(a[i].unit_type, "B") == 0) // bases cannot attack
             a[i].attack_count = 0;
-        //else if (a[i].training_time > 0) // training units cannot attact
-        //    a[i].remaining_movement = 0;    
         else
             a[i].attack_count = 1;
     }

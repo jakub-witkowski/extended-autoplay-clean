@@ -51,14 +51,6 @@ int main()
     load_status("status.txt", &units_on_the_map_counter, &gold, active_units); // read data from status.txt
     load_orders("player1.txt", "player2.txt", "rozkazy.txt", "status.txt", active_units, &units_on_the_map_counter); // read data from rozkazy.txt
 
-    /*if (player1_round_counter == 1)
-        write_status();
-    else if (player1_round_counter > 1)
-    {
-        load_player_file();
-        write_status();
-    }*/
-
     player1_round_counter++;
 
     int ret2;
@@ -81,9 +73,6 @@ int main()
     /* analyze the results */
     load_status("status.txt", &units_on_the_map_counter, &gold, active_units); // read data from status.txt
     load_orders("player2.txt", "player1.txt", "rozkazy.txt", "status.txt", active_units, &units_on_the_map_counter); // read data from rozkazy.txt
-
-    /*load_player_file();
-    write_status();*/
     
     player2_round_counter++;
 

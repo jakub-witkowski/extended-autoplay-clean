@@ -50,8 +50,6 @@ void load_player_input(char fname[], au a[], int *u, int *l)
         if (spaces == 1 && letters == 1)
         {
             sscanf(player_input, "%d T", &training_time_left);
-            //printf("\n------------------------------------------\n");
-            //printf("Read training time left: %d\n", training_time_left);
             letters = 0;
             spaces = 0;
         }

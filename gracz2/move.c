@@ -24,7 +24,6 @@ typedef struct {
     int remaining_movement;
     int attack_count;
     char is_base_busy[2];
-//    int training_time;
 } au;
 
 void move(char fname[], au a[], int* u, int m[][MAP_SIZE_X])
@@ -49,111 +48,76 @@ void move(char fname[], au a[], int* u, int m[][MAP_SIZE_X])
         if ((strcmp(a[i].affiliation, "P") == 0))
             dice_cast = -1;
         
-        /* cannot select units in training 
-        if (a[i].training_time > 0)
-            dice_cast = -1;*/
-
         /* cannot move bases */
         if ((strcmp(a[i].unit_type, "B") == 0))
             dice_cast = -1;
 
         /* knights have 5 points of movement */
         if ((strcmp(a[i].affiliation, "E") == 0) && (strcmp(a[i].unit_type, "B") != 0) && (strcmp(a[i].unit_type, "K") == 0)) 
-        //if ((strcmp(a[i].affiliation, "E") == 0) && (strcmp(a[i].unit_type, "B") != 0) && a[i].training_time == 0 && (strcmp(a[i].unit_type, "K") == 0)) 
         { 
             distance = rand() % 6;
-            //printf("%d ", distance);
             switch (distance)
             {
                 case 0:
                     x_axis_move = 0;
-                    //printf("%d ", x_axis_move);
                     y_axis_move = 0;
-                    //printf("%d \n", y_axis_move);
                     dice_cast = -1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
                 case 1:
                     row_number = rand() % 2;
                     x_axis_move = spread1[row_number][0];
-                    //printf("%d ", x_axis_move);
                     y_axis_move = spread1[row_number][1];
-                    //printf("%d \n", y_axis_move);
                     dice_cast = 1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
                 case 2:
                     row_number = rand() % 3;
                     x_axis_move = spread2[row_number][0];
-                    //printf("%d ", x_axis_move);
                     y_axis_move = spread2[row_number][1];
-                    //printf("%d \n", y_axis_move);
                     dice_cast = 1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
                 case 3:
                     row_number = rand() % 4;
                     x_axis_move = spread3[row_number][0];
-                    //printf("%d ", x_axis_move);
                     y_axis_move = spread3[row_number][1];
-                    //printf("%d \n", y_axis_move);
                     dice_cast = 1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
                 case 4:
                     row_number = rand() % 5;
                     x_axis_move = spread4[row_number][0];
-                    //printf("%d ", x_axis_move);
                     y_axis_move = spread4[row_number][1];
-                    //printf("%d \n", y_axis_move);
                     dice_cast = 1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
                 case 5:
                     row_number = rand() % 6;
                     x_axis_move = spread5[row_number][0];
-                    //printf("%d ", x_axis_move);
                     y_axis_move = spread5[row_number][1];
-                    //printf("%d \n", y_axis_move);
                     dice_cast = 1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
             } 
         }
 
         /* all other movable units have 2 points of movement */
         else if ((strcmp(a[i].affiliation, "E") == 0) && (strcmp(a[i].unit_type, "B") != 0) && (strcmp(a[i].unit_type, "K") != 0))
-        //else if ((strcmp(a[i].affiliation, "E") == 0) && (strcmp(a[i].unit_type, "B") != 0) && a[i].training_time == 0 && (strcmp(a[i].unit_type, "K") != 0))
         {
             distance = rand() % 3;
-            //printf("%d ", distance);
             switch (distance)
             {
                 case 0:
                     x_axis_move = 0;
-                    //printf("%d ", x_axis_move);
                     y_axis_move = 0;
-                    //printf("%d \n", y_axis_move);
                     dice_cast = -1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
                 case 1:
                     row_number = rand() % 2;
                     x_axis_move = spread1[row_number][0];
-                    //printf("%d ", x_axis_move);
                     y_axis_move = spread1[row_number][1];
-                    //printf("%d \n", y_axis_move);
                     dice_cast = 1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
                 case 2:
                     row_number = rand() % 3;
                     x_axis_move = spread2[row_number][0];
-                    //printf("%d ", x_axis_move);
                     y_axis_move = spread2[row_number][1];
-                    //printf("%d \n", y_axis_move);
                     dice_cast = 1;
-                    //printf("DC: %d \n", dice_cast);
                     break;
             }
         }
@@ -178,8 +142,6 @@ void move(char fname[], au a[], int* u, int m[][MAP_SIZE_X])
 
         if (dice_cast == 1)
         {
-            //printf("Dice cast: moving x by %d, y by %d. ", x_axis_move, y_axis_move);
-
             x = a[i].x_coord - x_axis_move;
             y = a[i].y_coord - y_axis_move;
             a[i].remaining_movement -= distance;

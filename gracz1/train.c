@@ -14,7 +14,6 @@ typedef struct {
     int remaining_movement;
     int attack_count;
     char is_base_busy[2];
-//    int training_time;
 } au;
 
 void train(char fname[], long* g, au a[], int* u, int* t, int* l)
@@ -34,7 +33,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 	if (choice_made == 0 && *g < 200)
 	{
 		unit_cost = 100;
-        //unit_stamina = 20;
 		training_time = 2;
 		phrase = "training a worker";
 		type = "W";
@@ -47,7 +45,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		if (value <=10)
 		{
 			unit_cost = 100;
-			//unit_stamina = 20;
 			training_time = 2;
 			phrase = "training a worker";
 			type = "W";
@@ -56,7 +53,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value >10 && value <= 20)
 		{
 			unit_cost = 200;
-            //unit_stamina = 50;
 			training_time = 3;
 			phrase = "training a pikeman";
 			type = "P";
@@ -70,7 +66,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		if (value <= 10)
 		{
 			unit_cost = 100;
-			//unit_stamina = 20;
 			training_time = 2;
 			phrase = "training a worker";
 			type = "W";
@@ -79,7 +74,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 10 && value <= 20)
 		{
 			unit_cost = 200;
-            //unit_stamina = 50;
 			training_time = 3;
 			phrase = "training a pikeman";
 			type = "P";
@@ -88,7 +82,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 20 && value <= 30)
 		{
 			unit_cost = 250;
-            //unit_stamina = 60;
 			training_time = 3;
 			phrase = "training a swordsman";
 			type = "S";
@@ -97,7 +90,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 30 && value <= 40)
 		{
 			unit_cost = 250;
-            //unit_stamina = 40;
 			training_time = 3;
 			phrase = "training an archer";
 			type = "A";
@@ -111,7 +103,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		if (value <= 10)
 		{
 			unit_cost = 100;
-			//unit_stamina = 20;
 			training_time = 2;
 			phrase = "training a worker";
 			type = "W";
@@ -120,7 +111,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 10 && value <= 20)
 		{
 			unit_cost = 200;
-            //unit_stamina = 50;
 			training_time = 3;
 			phrase = "training a pikeman";
 			type = "P";
@@ -129,7 +119,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 20 && value <= 30)
 		{
 			unit_cost = 250;
-            //unit_stamina = 60;
 			training_time = 3;
 			phrase = "training a swordsman";
 			type = "S";
@@ -138,7 +127,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 30 && value <= 40)
 		{
 			unit_cost = 250;
-            //unit_stamina = 40;
 			training_time = 3;
 			phrase = "training an archer";
 			type = "A";
@@ -147,7 +135,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 40 && value <= 50)
 		{
 			unit_cost = 400;
-            //unit_stamina = 70;
 			training_time = 5;
 			phrase = "training a knight";
 			type = "K";
@@ -161,7 +148,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		if (value <= 10)
 		{
 			unit_cost = 100;
-			//unit_stamina = 20;
 			training_time = 2;
 			phrase = "training a worker";
 			type = "W";
@@ -170,7 +156,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 10 && value <= 20)
 		{
 			unit_cost = 200;
-            //unit_stamina = 50;
 			training_time = 3;
 			phrase = "training a pikeman";
 			type = "P";
@@ -179,7 +164,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 20 && value <= 30)
 		{
 			unit_cost = 250;
-            //unit_stamina = 60;
 			training_time = 3;
 			phrase = "training a swordsman";
 			type = "S";
@@ -188,7 +172,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 30 && value <= 40)
 		{
 			unit_cost = 250;
-            //unit_stamina = 40;
 			training_time = 3;
 			phrase = "training an archer";
 			type = "A";
@@ -197,7 +180,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 40 && value <= 50)
 		{
 			unit_cost = 400;
-            //unit_stamina = 70;
 			training_time = 5;
 			phrase = "training a knight";
 			type = "K";
@@ -206,7 +188,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 50 && value <= 60)
 		{
 			unit_cost = 500;
-            //unit_stamina = 90;
 			training_time = 4;
 			phrase = "producing a ram";
 			type = "R";
@@ -220,7 +201,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		if (value <= 10)
 		{
 			unit_cost = 100;
-			//unit_stamina = 20;
 			training_time = 2;
 			phrase = "training a worker";
 			type = "W";
@@ -229,7 +209,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 10 && value <= 20)
 		{
 			unit_cost = 200;
-            //unit_stamina = 50;
 			training_time = 3;
 			phrase = "training a pikeman";
 			type = "P";
@@ -238,7 +217,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 20 && value <= 30)
 		{
 			unit_cost = 250;
-            //unit_stamina = 60;
 			training_time = 3;
 			phrase = "training a swordsman";
 			type = "S";
@@ -247,7 +225,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 30 && value <= 40)
 		{
 			unit_cost = 250;
-            //unit_stamina = 40;
 			training_time = 3;
 			phrase = "training an archer";
 			type = "A";
@@ -256,7 +233,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 40 && value <= 50)
 		{
 			unit_cost = 400;
-            //unit_stamina = 70;
 			training_time = 5;
 			phrase = "training a knight";
 			type = "K";
@@ -265,7 +241,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 50 && value <= 60)
 		{
 			unit_cost = 500;
-            //unit_stamina = 90;
 			training_time = 4;
 			phrase = "producing a ram";
 			type = "R";
@@ -274,7 +249,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 		else if (value > 60)
 		{
 			unit_cost = 800;
-            //unit_stamina = 50;
 			training_time = 6;
 			phrase = "producing a catapult";
 			type = "C";
@@ -284,15 +258,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
 
 	if (choice_made == 1)
 	{
-		/* training start successful 
-		strcpy(a[*u].affiliation, "P");
-		strcpy(a[*u].unit_type, t);
-		a[*u].unit_id = *u;
-		a[*u].x_coord = 0;
-		a[*u].y_coord = 0;
-		a[*u].current_stamina = unit_stamina;
-		a[*u].training_time = training_time;*/
-
 		*t = 1;
 		*l = training_time;
 		*g -= unit_cost;
@@ -314,8 +279,6 @@ void train(char fname[], long* g, au a[], int* u, int* t, int* l)
         fclose(fptr);
 
 		printf("Started %s.\n", phrase);
-		//printf("Gold left: %ld. \n", *g);
-		//strcpy(a[0].is_base_busy, type);
 	}
 	
 }
